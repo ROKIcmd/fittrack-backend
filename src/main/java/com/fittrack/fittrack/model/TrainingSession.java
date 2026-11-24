@@ -17,9 +17,12 @@ public class TrainingSession implements Serializable {
     private LocalTime startTime;
     private int durationMinutes;
     private Status status;
+    private String routineCategory;   // e.g., "Legs", "Push"
+    private int exercisesCompleted;   // e.g., 6
+    private int totalExercises;       // e.g., 6
+    private double loadKg;            // e.g., 40.0
 
-    public TrainingSession(String id, String memberId, String trainerId, String title,
-                           LocalDate date, LocalTime startTime, int durationMinutes) {
+    public TrainingSession(String id, String memberId, String trainerId, String title, LocalDate date, LocalTime startTime, int durationMinutes, Status status, String routineCategory, int exercisesCompleted, int totalExercises, double loadKg) {
         this.id = id;
         this.memberId = memberId;
         this.trainerId = trainerId;
@@ -27,7 +30,11 @@ public class TrainingSession implements Serializable {
         this.date = date;
         this.startTime = startTime;
         this.durationMinutes = durationMinutes;
-        this.status = Status.SCHEDULED;
+        this.status = status;
+        this.routineCategory = routineCategory;
+        this.exercisesCompleted = exercisesCompleted;
+        this.totalExercises = totalExercises;
+        this.loadKg = loadKg;
     }
 
     public void start() { this.status = Status.STARTED; }
@@ -39,6 +46,10 @@ public class TrainingSession implements Serializable {
         this.status = Status.RESCHEDULED;
     }
 
+    public String getRoutineCategory() { return routineCategory; }
+    public int getExercisesCompleted() { return exercisesCompleted; }
+    public int getTotalExercises() { return totalExercises; }
+    public double getLoadKg() { return loadKg; }
     public String getId() { return id; }
     public String getMemberId() { return memberId; }
     public String getTrainerId() { return trainerId; }
