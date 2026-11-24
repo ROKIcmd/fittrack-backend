@@ -7,6 +7,7 @@ public class DataStore {
 
     private final UserRepository users = new UserRepository();
     private final PlanRepository plans = new PlanRepository();
+    private final NotificationRepository notifications = new NotificationRepository();
     private final Repository<Membership> memberships = new FileRepository<>("data/memberships.dat", Membership::getId);
     private final Repository<BillingRecord> billing = new FileRepository<>("data/billing.dat", BillingRecord::getId);
     private final Repository<TrainingSession> sessions = new FileRepository<>("data/sessions.dat", TrainingSession::getId);
@@ -28,6 +29,7 @@ public class DataStore {
 
     public UserRepository users() { return users; }
     public PlanRepository plans() { return plans; }
+    public NotificationRepository notifications() { return notifications; }
     public Repository<Membership> memberships() { return memberships; }
     public Repository<BillingRecord> billing() { return billing; }
     public Repository<TrainingSession> sessions() { return sessions; }
